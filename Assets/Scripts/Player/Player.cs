@@ -61,15 +61,10 @@ public class Player : MonoBehaviour
             isGrounded = true;
             wasDoubleJump = false;
         }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(damageTaken);
         }
-
     }
 
     //Логика получение урона

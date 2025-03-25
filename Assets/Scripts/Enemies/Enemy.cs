@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 // Это враг, который следует за игроком
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public float speed = 3f;
-    public float chaseRange = 5f;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private float chaseRange = 5f;
 
     private Transform target;
     private bool isChasing = false;
 
     void Start()
     {
-       
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
