@@ -10,9 +10,15 @@ public class Player : MonoBehaviour
     private bool isGrounded = true;
     bool wasDoubleJump = false;
 
+    //Health
+    public int maxHealth = 100;
+    public int currentHealth;
+    public int damageTaken = 20; //Урон, который будет получать игрок
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
     private void Update()
@@ -47,6 +53,7 @@ public class Player : MonoBehaviour
         Instantiate(jumpParticle,transform.position, Quaternion.identity);
     }
 
+    //Обработка столкновений ( земля + получение урона)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Floor"))
@@ -54,5 +61,28 @@ public class Player : MonoBehaviour
             isGrounded = true;
             wasDoubleJump = false;
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(damageTaken);
+        }
+
+    }
+
+    //Логика получение урона
+    public void TakeDamage (int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
+            Die();
+        Debug.Log(currentHealth);
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
