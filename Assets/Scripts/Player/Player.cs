@@ -11,9 +11,8 @@ public class Player : MonoBehaviour
     bool wasDoubleJump = false;
 
     //Health
-    public int maxHealth = 100;
-    public int currentHealth;
-    public int damageTaken = 20; //Урон, который будет получать игрок
+    [SerializeField] private int maxHealth = 100;
+    private int currentHealth;
 
     void Start()
     {
@@ -60,10 +59,6 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
             wasDoubleJump = false;
-        }
-        else if (collision.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage(damageTaken);
         }
     }
 

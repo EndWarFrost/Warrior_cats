@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 1268310985}
   - component: {fileID: 1268310984}
   - component: {fileID: 1268310986}
+  - component: {fileID: 1268310987}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -621,8 +622,22 @@ MonoBehaviour:
   speed: 12
   jumpParticle: {fileID: 1537800395861078707, guid: 110776f39c3e29d4aa33d9deefcd73b7, type: 3}
   maxHealth: 100
-  currentHealth: 0
-  damageTaken: 20
+--- !u!114 &1268310987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268310981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5dee4f535e2be541ba0dd614bb5051f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  attackRange: 7
+  attackCooldown: 2
+  attackParticles: {fileID: 1537800395861078707, guid: 6c32234b094a49542b86870f5e2548c9, type: 3}
 --- !u!1 &1337288077
 GameObject:
   m_ObjectHideFlags: 0
