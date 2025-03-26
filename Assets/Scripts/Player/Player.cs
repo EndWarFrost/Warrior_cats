@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         _rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, _rb.velocity.y);
     }
 
+    //Jump
     private void Jump()
     {
         if (!isGrounded)
@@ -44,15 +45,18 @@ public class Player : MonoBehaviour
             if (wasDoubleJump)
                 return;
             else
+            {
                 wasDoubleJump = true;
+                Instantiate(jumpParticle, transform.position, Quaternion.identity);
+            }  
         }
 
-        _rb.velocity = new Vector2(_rb.velocity.x, 6);
+        _rb.velocity = new Vector2(_rb.velocity.x, 12);
         isGrounded = false;
-        Instantiate(jumpParticle,transform.position, Quaternion.identity);
+        
     }
 
-    //Обработка столкновений ( земля + получение урона)
+    //Collision detection
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Floor"))
@@ -62,13 +66,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    //Логика получение урона
+    //Take damage logic
     public void TakeDamage (int damageAmount)
     {
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
             Die();
-        Debug.Log(currentHealth);
     }
 
     private void Die()

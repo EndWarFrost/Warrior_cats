@@ -31,7 +31,6 @@ public class CombatSystem : MonoBehaviour
             if (obj.collider.TryGetComponent<Enemy>(out Enemy _enemy))
             {
                 _enemy.TakeDamage(damage);
-                Debug.Log(damage);
             } 
         }
 
