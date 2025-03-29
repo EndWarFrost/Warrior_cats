@@ -37,7 +37,6 @@ public class CombatSystem : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
-
-
-
 }
+
+//class 
